@@ -35,13 +35,9 @@ def check_buy_stay_sell(df):
         df['check'] = 4
     elif all(df['sum'] == 4) and all(df['trt'] == 1):
         df['check'] = 3
-    elif all(df['sum'] == 4) and all(df['trt'] == 0):
-        df['check'] = 2
-    elif all(df['sum'] == 3) and all(df['trt'] == 1):
-        df['check'] = 1
-    elif all(df['sum'] == -2):
+    elif all(df['sum'] == -4):
         df['check'] = -1
-    elif all(df['sum'] < -2):
+    elif all(df['sum'] <= -5):
         df['check'] = -2
     else:
         df['check'] = 0
