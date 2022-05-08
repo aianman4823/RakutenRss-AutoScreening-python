@@ -16,7 +16,7 @@ def check_macd(df):
     """
     if crossover(df['macd'], df['macd_signal']):
         return 1
-    if crossover(df['macd_signal'], df['macd']):
+    elif crossover(df['macd_signal'], df['macd']):
         return -1
     else:
         return 0
@@ -70,7 +70,7 @@ def check_stoch_slow(df):
     higher_80 = (df['slowK'] >= 80) & (df['slowD'] >= 80)
     if crossover(df['slowK'], df['slowD']) and lower_20.values[-1]:
         return 1
-    elif crossover(df['slowD'], df['slowD']) and higher_80.values[-1]:
+    elif crossover(df['slowD'], df['slowK']) and higher_80.values[-1]:
         return -1
     else:
         return 0
