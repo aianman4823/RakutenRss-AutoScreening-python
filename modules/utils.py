@@ -2,6 +2,7 @@ import time
 import pyautogui as py
 import pandas as pd
 import slackweb
+import os
 
 
 def load_csv(f: str):

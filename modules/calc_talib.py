@@ -106,8 +106,8 @@ def calc_macd(df, long_span=26, short_span=12, signal_span=9):
     # macd, macdsignal, _ = ta.MACD(close, fastperiod=12, slowperiod=26, signalperiod=9)
     df['span_long'] = df['Close'].ewm(span=long_span).mean()
     df['span_short'] = df['Close'].ewm(span=short_span).mean()
-    df['macd_signal'] = df['Close'].ewm(span=signal_span).mean()
     df['macd'] = df['span_short'] - df['span_long']
+    df['macd_signal'] = df['macd'].ewm(span=signal_span).mean()
     df = df.drop(['span_short', 'span_long'], axis=1)
     return df
 
